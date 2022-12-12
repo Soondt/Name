@@ -13,9 +13,9 @@ Phanso ::Phanso (int a, int b)
 }
 
 
-Phanso& Phanso :: operator+=(const Phanso & src)
+Phanso& Phanso :: operator+=( Phanso & src)
 {
-    src.tu = tu * src.mau + mau * src*tu;
+    src.tu = tu * src.mau + mau * src.tu;
     src.mau = mau * src.mau;
     return *this ;
 }

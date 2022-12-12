@@ -1,4 +1,6 @@
 #include <iostream>
+#include<math.h>
+using namespace std;
 
 class Singleton
 {
@@ -27,6 +29,7 @@ Singleton * Singleton::Getinstance()
 class SortAlgorithm
 {
     private:
+    int a, b;
         static SortAlgorithm* _algorithm; // luu doi tuong duy nhat cua class
         void (*currentAlgorithm)(float[], int); // luu thuat toan dc chon
         SortAlgorithm(); // khong cho nguoi dung tao doi tuong khac
@@ -36,6 +39,10 @@ class SortAlgorithm
         static void InsertionSort(float[], int);
         static void InterchangeSort(float[], int);
         void Sort(float[], int);
+        const SortAlgorithm operator+ (const SortAlgorithm& ps) const;
+        const SortAlgorithm operator- (const SortAlgorithm& ps) const;
+        const SortAlgorithm operator* (const SortAlgorithm& ps) const;
+        const SortAlgorithm operator/ (const SortAlgorithm& ps) const;
 };
 
 // khoi tao doi tuong
@@ -123,19 +130,35 @@ void SortAlgorithm::InterchangeSort(float a[], int n)
     } 
 }
 
+const SortAlgorithm SortAlgorithm::operator+ (const SortAlgorithm& ps) const
+{ 
+    SortAlgorithm temp;
+    temp.a += a;
+    temp.b += b;  
+    return temp;
+}
+
 int main()
 {
-    Singleton *obj = Singleton::Getinstance();
-    float a[] = {1.4, -1.5, 3.3, 0};
-    int temp = sizeof(a) / sizeof(a[0]);
-    SortAlgorithm *alg = SortAlgorithm::getObject((SortAlgorithm::SelectionSort));
-    alg -> Sort(a,temp);
-    std::cout << " mang sau khi sap xep: " << std::endl;
-    for (int i = 0; i < temp; i++)
-    {
-        std::cout << a[i]<< " " ;
-    }
+    // Singleton *obj = Singleton::Getinstance();
+    // float a[] = {1.4, -1.5, 3.3, 0};
+    // int temp = sizeof(a) / sizeof(a[0]);
+    // SortAlgorithm *alg = SortAlgorithm::getObject((SortAlgorithm::SelectionSort));
+    // alg -> Sort(a,temp);
+    // std::cout << " mang sau khi sap xep: " << std::endl;
+    // for (int i = 0; i < temp; i++)
+    // {
+    //     std::cout << a[i]<< " " ;
+    // }
     
+    int a[] = {10,12};
+    for ( const auto& x: a)
+    {
+        std:: cout << x << " ";
+
+    }
+
+
     return 0;
 
 }

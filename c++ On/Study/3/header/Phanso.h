@@ -12,7 +12,7 @@ private:
 public:
     Phanso(/* args */);
     Phanso(int, int);
-    Phanso& operator+=(const Phanso&);
+    Phanso& operator+=( Phanso&);
     const Phanso operator+(const Phanso&) const;
     bool operator==(const Phanso&) const;
     Phanso &operator++();
